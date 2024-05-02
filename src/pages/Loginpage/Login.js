@@ -8,8 +8,6 @@ function Login() {
         <h2 className="heading">Login</h2>
 
         <form>
-          <label htmlFor="Name">Name</label>
-          <input type="text" className="email" id="email" />
           <label htmlFor="email">Email</label>
           <input type="email" id="email" />
 
@@ -18,7 +16,7 @@ function Login() {
           <input type="submit" className="submit-btn" />
         </form>
         <p className="para">
-          {/*  Cannot destructure property 'basename' of)=Due to browserRouter in index.js  */}
+          {/*  (Cannot destructure property 'basename' of)=Due to BrowserRouter not imported in index.js  */}
           Dont have an Account? <Link to="/signup">SignUp</Link>
         </p>
       </div>
