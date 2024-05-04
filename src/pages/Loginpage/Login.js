@@ -1,7 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Login.scss";
 import { Link } from "react-router-dom";
+import { axiosClient } from "../../utils/axiosClient";
 function Login() {
+  // const [name,setname]=useState("")
+  const [email, setemail] = useState("");
+  const [password, setpassword] = useState("");
+
+  async function handlesubmit(e) {
+    try {
+      e.preventDefault();
+      const response = await axiosClient.post("/auth/login", {
+        email,
+        password,
+      });
+
+      console.log("This is response from login page", response);
+    } catch (error) {
+      console.log(error);
+    }
+  }
   return (
     <div className="login">
       <div className="login-box">
@@ -9,11 +27,20 @@ function Login() {
 
         <form>
           <label htmlFor="email">Email</label>
-          <input type="email" id="email" />
-
+          <input
+            value={email}
+            type="email"
+            id="email"
+            onChange={(e) => setemail(e.target.value)}
+          />
           <label htmlFor="password">Password</label>
-          <input type="password" id="password" />
-          <input type="submit" className="submit-btn" />
+          <input
+            value={password}
+            type="password"
+            id="password"
+            onChange={(e) => setpassword(e.target.value)}
+          />
+          <input type="submit" className="submit-btn" onClick={handlesubmit} />
         </form>
         <p className="para">
           {/*  (Cannot destructure property 'basename' of)=Due to BrowserRouter not imported in index.js  */}
