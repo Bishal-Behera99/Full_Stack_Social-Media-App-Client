@@ -41,3 +41,41 @@ p{
 .hover-link:active{
   color: red;
 }
+.btn-primary{
+  background-color: var(--accent-color);
+  color: white;
+  font-weight: bold;
+  padding: 10px 40px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.btn-primary:hover{
+
+  background-color: #5f9fff;
+
+
+}
+
+.btn-primary:active{
+  background-color: var(--accent-color)
+}
+
+.btn-secondary{
+ 
+  color: var(--accent-color);
+  font-weight: bold;
+  padding: 10px 40px;
+  background: none;
+  border: 2px solid  var(--accent-color);
+  border-radius: 4px;
+  cursor: pointer;
+}
+.btn-secondary:hover{
+
+  background-color: #ddd;
+}
+
+.btn-secondary{
+  background: none;
+}

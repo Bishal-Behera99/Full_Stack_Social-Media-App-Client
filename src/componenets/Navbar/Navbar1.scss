@@ -1,5 +1,8 @@
 .Navbar{
-  
+    width: 100%;
+    position: fixed;
+    top: 0;
+    background-color: white;
     height: 60px;
     border-bottom: 1px solid gray;
     .container{
@@ -10,5 +13,19 @@
         justify-content: space-between;
         align-items: center;
        
+        .right-side{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+
+            .logout{
+                font-size: 1.5rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+
     }
 }

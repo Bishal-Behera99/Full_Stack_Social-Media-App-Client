@@ -6,6 +6,7 @@ import Homepage from "./pages/Homepage/Homepage";
 import Requireduser from "./componenets/Requireduser";
 import Feed from "./componenets/Feed/Feed";
 import Profile from "./componenets/Profile/Profile";
+import Comment from "./componenets/Comment/Comment";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route element={<Homepage />}>
             <Route path="/" element={<Feed />} />
             <Route path="/profile/:userId" element={<Profile />} />
+            <Route path="/comment" element={<Comment />} />
           </Route>
         </Route>
         <Route path="/login" element={<Login />} />
