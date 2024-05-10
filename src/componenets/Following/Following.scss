@@ -1,0 +1,11 @@
+.Following{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 5px;
+    height: 60px;
+    // border: 1px solid red;
+    .follow-link{
+        color: var(--accent-color);
+    }
+}

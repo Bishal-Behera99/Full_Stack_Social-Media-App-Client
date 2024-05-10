@@ -1,16 +1,15 @@
 import React, { useEffect } from "react";
 import { axiosClient } from "../../utils/axiosClient";
+import Navbar from "../../componenets/Navbar/Navbar";
+import { Outlet } from "react-router-dom";
 
 function Homepage() {
-  useEffect(() => {
-    fetchdata();
-  }, []);
-
-  async function fetchdata() {
-    const response = await axiosClient.post("/post/");
-    console.log("From home page", response);
-  }
-  return <div>Homepage</div>;
+  return (
+    <>
+      <Navbar />
+      <Outlet />
+    </>
+  );
 }
 
 export default Homepage;

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Login.scss";
 import { Link } from "react-router-dom";
 import { axiosClient } from "../../utils/axiosClient";
+import { KEY_ACCESS_TOKEN, setItem } from "../../utils/Localstoragemanager";
 function Login() {
   // const [name,setname]=useState("")
   const [email, setemail] = useState("");
@@ -14,8 +15,7 @@ function Login() {
         email,
         password,
       });
-
-      console.log("This is response from login page", response);
+      setItem(KEY_ACCESS_TOKEN, response.result.accesstoken);
     } catch (error) {
       console.log(error);
     }
