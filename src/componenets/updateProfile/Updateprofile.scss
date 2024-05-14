@@ -1,0 +1,51 @@
+.Updateprofile{
+    max-width: 960px  ;
+    margin-inline: auto;
+    margin-top: 20px;
+    display: flex;
+    
+
+    .left-side{
+        flex: 1;
+        // border: 2px solid red;
+        
+        img{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            padding-top: 20px;
+            cursor: pointer;
+            text-align: center;
+        }
+    }
+
+    .right-side{
+        flex: 3;
+      
+
+       form {
+        border: 1px solid gray;
+        border-radius: 4px;
+        padding: 20px;
+       }
+        input{
+            width: 100%;
+            display: block;
+            padding: 8px 16px;
+            margin-top: 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            outline: none;
+
+        }
+
+        .delete-account{
+            margin-top: 10px;
+            background-color: red;
+        }
+
+        .btn-primary{
+            width: fit-content;
+        }
+    }
+}

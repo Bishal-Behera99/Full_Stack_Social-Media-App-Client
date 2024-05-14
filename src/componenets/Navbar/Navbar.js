@@ -5,9 +5,14 @@ import { AiOutlineLogout } from "react-icons/ai";
 
 import { useNavigate } from "react-router-dom";
 import { KEY_ACCESS_TOKEN, removeItem } from "../../utils/Localstoragemanager";
+import { useDispatch, useSelector } from "react-redux";
+import { setLoading } from "../../Redux/slices/appConfigSlice";
 function Navbar() {
+  const myProfile = useSelector((state) => state.appConfigReducer.isProfile);
+
   const navigate = useNavigate();
-  function handleclick(e) {
+  const dispatch = useDispatch();
+  function handlelogoutclick(e) {
     e.preventDefault();
     removeItem(KEY_ACCESS_TOKEN);
     navigate("/login");
@@ -22,12 +27,12 @@ function Navbar() {
         <div className="right-side">
           <div
             className="profile"
-            onClick={() => navigate("/profile/bkbsdkjb")}
+            onClick={() => navigate(`/profile/${myProfile?._id}`)}
           >
             <Avatar />
           </div>
           <div className="logout hover-link">
-            <AiOutlineLogout onClick={handleclick} />
+            <AiOutlineLogout onClick={handlelogoutclick} />
           </div>
         </div>
       </div>
