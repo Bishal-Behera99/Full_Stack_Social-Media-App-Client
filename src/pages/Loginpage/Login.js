@@ -25,7 +25,7 @@ function Login() {
       <div className="login-box">
         <h2 className="heading">Login</h2>
 
-        <form>
+        <form onSubmit={handlesubmit}>
           <label htmlFor="email">Email</label>
           <input
             value={email}
