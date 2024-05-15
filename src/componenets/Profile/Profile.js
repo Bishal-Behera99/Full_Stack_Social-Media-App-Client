@@ -3,11 +3,13 @@ import "./Profile.scss";
 import batman from "../../assests/batman.png";
 import Post from "../Post/Post";
 import { useNavigate } from "react-router-dom";
+import Createpost from "../createpost/Createpost";
 function Profile() {
   const navigate = useNavigate();
   return (
     <div className="Profile">
       <div className="left">
+        <Createpost />
         <Post />
         <Post />
         <Post />
