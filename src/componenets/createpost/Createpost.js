@@ -37,6 +37,8 @@ function Createpost() {
       return Promise.reject(error);
     } finally {
       dispatch(setLoading(false));
+      setcaption("");
+      setPostimg("");
     }
   }
   return (
@@ -44,6 +46,7 @@ function Createpost() {
       <div className="heading">
         <Avatar />
         <input
+          value={caption}
           type="text"
           className="captionInput"
           placeholder="Enter Your Caption"

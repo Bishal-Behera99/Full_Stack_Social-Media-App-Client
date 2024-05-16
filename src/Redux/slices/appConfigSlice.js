@@ -14,7 +14,7 @@ export const getMyprofile = createAsyncThunk(
       return response.data.result;
       //   console.log(response);
     } catch (error) {
-      console.log(error);
+      return Promise.reject(error);
     } finally {
       thunkApi.dispatch(setLoading(false));
     }
