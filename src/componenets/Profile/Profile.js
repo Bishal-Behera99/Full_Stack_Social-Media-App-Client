@@ -10,6 +10,7 @@ function Profile() {
   const userProfile = useSelector(
     (state) => state.postSliceReducer.userProfile
   );
+  const myProfile = useSelector((state) => state.appConfigReducer.isProfile);
 
   const [isProfile, setisProfile] = useState(false);
   const navigate = useNavigate();
@@ -17,12 +18,12 @@ function Profile() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getuserProfile({ userId: params.userId }));
-    if (userProfile?._id == params.userId) {
+    if (myProfile?._id == params.userId) {
       setisProfile(true);
     } else {
       setisProfile(false);
     }
-  }, [userProfile]);
+  }, [myProfile, params.userId]);
   return (
     <div className="Profile">
       <div className="left">
@@ -41,7 +42,7 @@ function Profile() {
           <h3 className="user-name">{userProfile?.name}</h3>
           <div className="follower-info">
             <h4>{`${userProfile?.followers?.length} followers`}</h4>
-            <h4> {`${userProfile?.followings?.length} following`}</h4>
+            <h4> {`${userProfile?.followings.length} following`}</h4>
           </div>
           {!isProfile && <button className="follow btn-primary">Follow</button>}
           {isProfile && (

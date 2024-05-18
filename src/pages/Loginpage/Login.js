@@ -15,7 +15,9 @@ function Login() {
         email,
         password,
       });
-      setItem(KEY_ACCESS_TOKEN, response.result.accesstoken);
+
+      console.log("for login", response);
+      setItem(KEY_ACCESS_TOKEN, response.data.result.accesstoken);
     } catch (error) {
       console.log(error);
     }

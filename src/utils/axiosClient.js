@@ -23,7 +23,7 @@ axiosClient.interceptors.response.use(
     const data = response.data;
 
     if (data.status === "ok") {
-      return data;
+      return response;
     }
 
     const originalrequest = response.config;

@@ -12,9 +12,10 @@ export const getMyprofile = createAsyncThunk(
       const response = await axiosClient.get("/user/getmyProfile");
 
       return response.data.result;
-      //   console.log(response);
+      // console.log("my profile", response);
     } catch (error) {
       return Promise.reject(error);
+      // console.log(error);
     } finally {
       thunkApi.dispatch(setLoading(false));
     }

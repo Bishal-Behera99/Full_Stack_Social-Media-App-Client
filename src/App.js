@@ -11,6 +11,7 @@ import Updateprofile from "./componenets/updateProfile/Updateprofile";
 import LoadingBar from "react-top-loading-bar";
 import { useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
+import OnlyIfNotLoggedIn from "./componenets/OnlyIfNotLoggedIn";
 
 function App() {
   const isLoading = useSelector((state) => state.appConfigReducer.isLoading);
@@ -33,13 +34,15 @@ function App() {
           <Route element={<Homepage />}>
             <Route path="/" element={<Feed />} />
             <Route path="/profile/:userId" element={<Profile />} />
-            <Route path="/comment" element={<Comment />} />
+            <Route path="/comment/:postId" element={<Comment />} />
             <Route path="/updateProfile" element={<Updateprofile />} />
           </Route>
         </Route>
-        <Route path="/login" element={<Login />} />
+        <Route element={<OnlyIfNotLoggedIn />}>
+          <Route path="/login" element={<Login />} />
 
-        <Route path="/signup" element={<Signup />} />
+          <Route path="/signup" element={<Signup />} />
+        </Route>
       </Routes>
     </div>
   );

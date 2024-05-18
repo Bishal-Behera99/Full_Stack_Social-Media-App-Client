@@ -4,12 +4,15 @@ import pizza from "../../assests/bg2.jpg";
 import Avatar from "../avatar/Avatar";
 import { BsCardImage } from "react-icons/bs";
 import { axiosClient } from "../../utils/axiosClient";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setLoading } from "../../Redux/slices/appConfigSlice";
+import { getuserProfile } from "../../Redux/slices/postSlice";
+import { useParams } from "react-router-dom";
 function Createpost() {
   const [postImg, setPostimg] = useState("");
   const [caption, setcaption] = useState("");
   const dispatch = useDispatch();
+  const myProfile = useSelector((state) => state.appConfigReducer.isProfile);
   function handleImage(e) {
     e.preventDefault();
     const file = e.target.files[0];
@@ -32,7 +35,8 @@ function Createpost() {
         postImg,
       });
 
-      console.log("post result", result);
+      dispatch(getuserProfile({ userId: myProfile?._id }));
+      // console.log("post result", result);
     } catch (error) {
       return Promise.reject(error);
     } finally {
