@@ -12,7 +12,7 @@ function Feed() {
 
   useEffect(() => {
     dispatch(getFeedData());
-  }, [dispatch]);
+  }, []);
   return (
     <div className="Feed">
       <div className="left-part">
@@ -23,17 +23,15 @@ function Feed() {
       <div className="right-part">
         <div className="following">
           <h3>You are following</h3>
-          <Following />
-          <Following />
-          <Following />
-          <Following />
+          {feedData?.followings?.map((items) => (
+            <Following key={items._id} src={items} />
+          ))}
         </div>
         <div className="follower">
           <h3>Suggested for you</h3>
-          <Follower />
-          <Follower />
-          <Follower />
-          <Follower />
+          {feedData?.suggestions?.map((items) => (
+            <Follower key={items._id} src={items} />
+          ))}
         </div>
       </div>
     </div>

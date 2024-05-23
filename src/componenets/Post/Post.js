@@ -24,7 +24,10 @@ function Post({ post }) {
 
   return (
     <div className="Post">
-      <div className="header-part">
+      <div
+        className="header-part"
+        onClick={() => navigate(`/profile/${post?.owner?._id}`)}
+      >
         <Avatar src={post?.avatar?.url} />
         <h3>{`${post?.owner?.name}`}</h3>
       </div>
@@ -45,7 +48,9 @@ function Post({ post }) {
 
           <FaCommentAlt
             className="icon"
-            onClick={() => navigate(`/comment/${post._id}`)}
+            onClick={() =>
+              navigate(`/comment/${post._id}`, { state: { post } })
+            }
           />
         </div>
         <h4 style={{ marginTop: "5px" }}>{`${post?.likesCount} likes`}</h4>

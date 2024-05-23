@@ -28,6 +28,7 @@
             // justify-content: center;
             align-items: center;
             gap: 20px;
+           
 
             h3{
                 font-size: 0.9rem;
@@ -37,6 +38,9 @@
         }
         p{
             margin-top: 10px;
+            display: block;
+            
+            // border: 2px solid red;
            
         }
     }

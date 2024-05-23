@@ -38,10 +38,29 @@ export const likeunlike = createAsyncThunk(
   }
 );
 
+export const getPostComments = createAsyncThunk(
+  "/post/comment",
+  async (body, thunkAPI) => {
+    try {
+      thunkAPI.dispatch(setLoading(true));
+      const response = await axiosClient.post("/post/comment", body);
+      console.log("user commnets", response);
+
+      return response.data.result;
+    } catch (error) {
+      // console.log(error);
+      return Promise.reject(error);
+    } finally {
+      thunkAPI.dispatch(setLoading(false));
+    }
+  }
+);
+
 const postSlice = createSlice({
   name: "postSlice",
   initialState: {
     userProfile: null,
+    postComment: {},
   },
   extraReducers: (builder) => {
     builder
@@ -51,12 +70,23 @@ const postSlice = createSlice({
       .addCase(likeunlike.fulfilled, (state, action) => {
         const post = action.payload.post;
 
-        const index = state.userProfile.posts.findIndex(
+        const index = state?.userProfile?.posts?.findIndex(
           (items) => items._id === post._id
         );
 
-        console.log(index);
-        if (index != -1) {
+        console.log("userprofile", index);
+        if (index != undefined && index != -1) {
+          state.userProfile.posts[index] = post;
+        }
+      })
+      .addCase(getPostComments.fulfilled, (state, action) => {
+        const post = action.payload.post;
+
+        const index = state?.userProfile?.posts?.findIndex(
+          (items) => items._id === post._id
+        );
+
+        if (index != undefined && index != -1) {
           state.userProfile.posts[index] = post;
         }
       });
